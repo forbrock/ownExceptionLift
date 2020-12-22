@@ -21,14 +21,14 @@ public class Model {
         }
     }
 
-    public void checkLogin(String login) throws NotUniqueException {
+    public void checkLogin(String login) throws NotUniqueLoginException {
         String query = "SELECT * FROM users WHERE login = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, login);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                throw new NotUniqueException();
+                throw new NotUniqueLoginException();
             }
         } catch (SQLException e) {
             e.printStackTrace();

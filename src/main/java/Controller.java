@@ -12,7 +12,7 @@ public class Controller {
             String login = createInput();
             try {
                 model.checkLogin(login);
-            } catch (NotUniqueException e) {
+            } catch (NotUniqueLoginException e) {
                 System.out.printf("This login \"%s\" already exist, please try again%n", login);
                 askUser();
             }
